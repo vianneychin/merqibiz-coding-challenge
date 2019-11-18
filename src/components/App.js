@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import TodoForm from './TodoForm'
 import ToDoList from './TodoList'
@@ -8,7 +8,7 @@ const App = () => {
   return (
     <MainContainer>
       <TodoForm
-        saveTodo={todoText => {
+        createTodo={todoText => {
           const trimmedText = todoText.trim()
 
           if (trimmedText.length > 0) {

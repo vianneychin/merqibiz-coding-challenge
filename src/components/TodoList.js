@@ -1,15 +1,15 @@
 import React from 'react'
 
-const TodoList = ({ todos, deleteTodo }) => {
+const TodoList = props => {
   return (
     <ul>
-      {todos.map((todo, index) => (
-        <li key={index.toString()}>
-          <input type='radio' />
+      <button>Sort by Highest Priority</button>
+      {props.todos.map((todo, index) => (
+        <li key={index}>
           {todo}
           <button
             onClick={() => {
-              deleteTodo(index)
+              props.deleteTodo(index)
             }}
           >
             Delete
