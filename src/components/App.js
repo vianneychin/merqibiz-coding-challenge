@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import ToDoList from './TodoList'
-import { Modal } from './AddTodoModal'
+import { AddTodoModal } from './AddTodoModal'
 
 const App = () => {
   const [todos, setTodos] = useState([])
@@ -28,7 +28,7 @@ const App = () => {
   const renderModal = () => {
     if (isModalShowing) {
       return (
-        <Modal
+        <AddTodoModal
           createTodo={todoText => {
             setTodos([...todos, todoText])
           }}

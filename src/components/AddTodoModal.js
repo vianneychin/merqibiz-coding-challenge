@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
-export const Modal = ({ props, hideModal, createTodo }) => {
+export const AddTodoModal = ({ props, hideModal, createTodo }) => {
   const [value, setValue] = useState('')
   const [priority, setPriority] = useState('medium')
 
@@ -52,7 +52,7 @@ export const Modal = ({ props, hideModal, createTodo }) => {
   )
 }
 
-const ModalShadow = styled.div`
+export const ModalShadow = styled.div`
   background-color: rgb(0, 0, 0, 0.5);
   height: 100%;
   width: 100vw;
@@ -68,11 +68,10 @@ const ModalShadow = styled.div`
     > form {
       display: flex;
       flex-direction: column;
-      justify-content: space-evenly;
     }
   }
 `
-const StyledButton = styled(Button)`
+export const StyledButton = styled(Button)`
   && {
     text-transform: lowercase;
   }
