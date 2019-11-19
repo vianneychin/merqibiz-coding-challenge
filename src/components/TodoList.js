@@ -9,13 +9,20 @@ const TodoList = props => {
       return <p>{txt}</p>
     }
   }
+  const renderButton = () => {
+    if (edit) {
+      return <button onClick={() => setEdit(false)}>cancel</button>
+    } else {
+      return <button onClick={() => setEdit(true)}>Edit</button>
+    }
+  }
   return (
     <>
       <ul>
         {props.todos.map((todo, index) => (
           <li key={index}>
             {renderTodo(todo)}
-            <button onClick={() => setEdit(true)}>Edit</button>
+            {renderButton()}
             <button
               onClick={() => {
                 props.deleteTodo(index)

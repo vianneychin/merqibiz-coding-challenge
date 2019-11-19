@@ -33,4 +33,7 @@ export const GlobalStyle = createGlobalStyle`
   button: hover {
     cursor: pointer;
   }
+  li {
+    list-style: none;
+  }
 `
