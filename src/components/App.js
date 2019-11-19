@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import TodoForm from './TodoForm'
 import ToDoList from './TodoList'
-import { Modal } from './/Modal'
+import { Modal } from './AddTodoModal'
 
 const App = () => {
   const [todos, setTodos] = useState([])
   const [isModalShowing, setIsModalShowing] = useState(false)
-  const [closeModal, setCloseModal] = useState(true)
 
   const sortTodos = () => {
     let highPriority = []
@@ -29,7 +27,14 @@ const App = () => {
   }
   const renderModal = () => {
     if (isModalShowing) {
-      return <Modal hideModal={() => setIsModalShowing(false)} />
+      return (
+        <Modal
+          createTodo={todoText => {
+            setTodos([...todos, todoText])
+          }}
+          hideModal={() => setIsModalShowing(false)}
+        />
+      )
     }
     if (!isModalShowing) {
       return ''
@@ -42,12 +47,6 @@ const App = () => {
       <MainContainer>
         <button onClick={() => setIsModalShowing(true)}>Add a todo</button>
         <button onClick={sortTodos}>Sort by highest priority.</button>
-
-        <TodoForm
-          createTodo={todoText => {
-            setTodos([...todos, todoText])
-          }}
-        />
         <ToDoList
           deleteTodo={todoIndex => {
             const newTodos = todos.filter((_, index) => index !== todoIndex)
