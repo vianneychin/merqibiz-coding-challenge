@@ -5,7 +5,7 @@ const ToDoForm = props => {
   const [priority, setPriority] = useState('medium')
   const onSubmit = event => {
     event.preventDefault()
-    props.createTodo(value + ' ' + priority)
+    props.createTodo([value, priority])
     setValue('')
   }
   const onChange = event => {
@@ -24,6 +24,7 @@ const ToDoForm = props => {
         </option>
         <option value='low'>Low</option>
       </select>
+      <button>Add To Do</button>
     </form>
   )
 }

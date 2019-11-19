@@ -5,15 +5,31 @@ import ToDoList from './TodoList'
 
 const App = () => {
   const [todos, setTodos] = useState([])
+
+  const sortTodos = () => {
+    let highPriority = []
+    let mediumPriority = []
+    let lowPriority = []
+    for (let i = 0; i <= todos.length - 1; i++) {
+      if (todos[i][1] === 'medium') {
+        mediumPriority.push(todos[i])
+      }
+      if (todos[i][1] === 'high') {
+        highPriority.push(todos[i])
+      }
+      if (todos[i][1] === 'low') {
+        lowPriority.push(todos[i])
+      }
+      setTodos([...highPriority, ...mediumPriority, ...lowPriority])
+    }
+  }
+
   return (
     <MainContainer>
+      <button onClick={sortTodos}>Sort by highest priority.</button>
       <TodoForm
         createTodo={todoText => {
-          const trimmedText = todoText.trim()
-
-          if (trimmedText.length > 0) {
-            setTodos([...todos, trimmedText])
-          }
+          setTodos([...todos, todoText])
         }}
       />
       <ToDoList
