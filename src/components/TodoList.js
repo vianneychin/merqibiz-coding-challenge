@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { StyledButton } from '../styles/Button'
 import styled from 'styled-components'
 import TextField from '@material-ui/core/TextField'
@@ -36,7 +36,7 @@ const TodoList = ({ todos, deleteTodo, reRender }) => {
   )
 }
 
-const TodoItem = ({ text, reRender }) => {
+const TodoItem = ({ text }) => {
   const [edit, setEdit] = useState(false)
   const [textValue, setTextValue] = useState(text[0])
   const [priorityValue, setPriorityValue] = useState(text[1])
