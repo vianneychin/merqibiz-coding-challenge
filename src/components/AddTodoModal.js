@@ -2,6 +2,12 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import TextField from '@material-ui/core/TextField'
 import { StyledButton } from '../styles/Button'
+import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem'
+import FormControl from '@material-ui/core/FormControl'
+import Select from '@material-ui/core/Select'
+import NativeSelect from '@material-ui/core/NativeSelect'
+import InputBase from '@material-ui/core/InputBase'
 
 export const AddTodoModal = ({ props, hideModal, createTodo }) => {
   const [value, setValue] = useState('')
@@ -32,15 +38,17 @@ export const AddTodoModal = ({ props, hideModal, createTodo }) => {
             variant='outlined'
             label='todo'
           />
-          <div>
-            <label>Priority:</label>{' '}
-            <select value={priority} onChange={onOptionChange}>
-              <option value='high'>High</option>
-              <option value='medium' defaultValue>
-                Medium
-              </option>
-              <option value='low'>Low</option>
-            </select>
+          <div style={{ marginTop: 20, marginBottom: 20 }}>
+            <FormControl>
+              <InputLabel htmlFor='age-customized-native-simple'>
+                Priority
+              </InputLabel>
+              <NativeSelect value={priority} onChange={onOptionChange}>
+                <option value='high'>high</option>
+                <option value='medium'>medium</option>
+                <option value='low'>low</option>
+              </NativeSelect>
+            </FormControl>
           </div>
 
           <StyledButton type='submit' variant='contained' color='primary'>
