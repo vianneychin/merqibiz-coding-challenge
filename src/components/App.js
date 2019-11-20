@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import ToDoList from './TodoList'
+import TodoList from './TodoList'
 import { AddTodoModal } from './AddTodoModal'
+import { StyledButton } from '../styles/Button'
 
 const App = () => {
   const [todos, setTodos] = useState([])
@@ -41,13 +42,13 @@ const App = () => {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     const data = sessionStorage.getItem('my-todos')
     if (data) {
       setTodos(JSON.parse(data))
     }
   }, [])
-  React.useEffect(() => {
+  useEffect(() => {
     sessionStorage.setItem('my-todos', JSON.stringify(todos))
   }, [todos])
 
@@ -55,9 +56,18 @@ const App = () => {
     <>
       {renderModal()}
       <MainContainer>
-        <button onClick={() => setIsModalShowing(true)}>Add a todo</button>
-        <button onClick={sortTodos}>Sort by highest priority.</button>
-        <ToDoList
+        <StyledButton
+
+          bg='cornflowerblue'
+          clr='rgb(240, 240, 240)'
+          onClick={() => setIsModalShowing(true)}
+        >
+          Add a todo
+        </StyledButton>
+        <StyledButton onClick={sortTodos}>
+          Sort by highest priority
+        </StyledButton>
+        <TodoList
           deleteTodo={todoIndex => {
             const newTodos = todos.filter((_, index) => index !== todoIndex)
             setTodos(newTodos)

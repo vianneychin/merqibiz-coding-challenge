@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { StyledButton } from '../styles/Button'
+
 const TodoList = ({ todos, deleteTodo }) => {
   return (
     <>
@@ -6,13 +8,13 @@ const TodoList = ({ todos, deleteTodo }) => {
         {todos.map((todo, index) => (
           <li key={index}>
             <TodoItem text={todo} item={todo} />
-            <button
+            <StyledButton
               onClick={() => {
                 deleteTodo(index)
               }}
             >
               Delete
-            </button>
+            </StyledButton>
           </li>
         ))}
       </ul>
@@ -36,9 +38,9 @@ const TodoItem = ({ text }) => {
   }
   const renderButton = () => {
     if (edit) {
-      return <button onClick={() => setEdit(false)}>cancel</button>
+      return <StyledButton onClick={() => setEdit(false)}>cancel</StyledButton>
     } else {
-      return <button onClick={() => setEdit(true)}>Edit</button>
+      return <StyledButton onClick={() => setEdit(true)}>Edit</StyledButton>
     }
   }
   const handleChange = e => {

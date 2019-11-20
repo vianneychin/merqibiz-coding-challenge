@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
+import { StyledButton } from '../styles/Button'
 
 export const AddTodoModal = ({ props, hideModal, createTodo }) => {
   const [value, setValue] = useState('')
@@ -60,6 +60,7 @@ export const ModalShadow = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
   > div {
     background-color: rgb(240, 240, 240);
     width: 60%;
@@ -69,10 +70,5 @@ export const ModalShadow = styled.div`
       display: flex;
       flex-direction: column;
     }
-  }
-`
-export const StyledButton = styled(Button)`
-  && {
-    text-transform: lowercase;
   }
 `
