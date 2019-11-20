@@ -1,6 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyledButton } from '../styles/Button'
 import styled from 'styled-components'
+import TextField from '@material-ui/core/TextField'
+import FormControl from '@material-ui/core/FormControl'
+import InputLabel from '@material-ui/core/InputLabel'
+import NativeSelect from '@material-ui/core/NativeSelect'
 
 const ListItem = styled.li`
   margin-bottom: 20px;
@@ -13,43 +17,65 @@ const ListItem = styled.li`
   border-radius: 0.5rem;
 `
 
-const TodoList = ({ todos, deleteTodo }) => {
+const TodoList = ({ todos, deleteTodo, reRender }) => {
   return (
-    <>
-      <ul>
-        {todos.map((todo, index) => (
-          <ListItem key={index}>
-            <TodoItem text={todo} item={todo} />
-            <StyledButton
-              onClick={() => {
-                deleteTodo(index)
-              }}
-            >
-              Delete
-            </StyledButton>
-          </ListItem>
-        ))}
-      </ul>
-    </>
+    <ul>
+      {todos.map((todo, index) => (
+        <ListItem key={index}>
+          <TodoItem text={todo} item={todo} />
+          <StyledButton
+            onClick={() => {
+              deleteTodo(index)
+            }}
+          >
+            Delete
+          </StyledButton>
+        </ListItem>
+      ))}
+    </ul>
   )
 }
 
-const TodoItem = ({ text }) => {
+const TodoItem = ({ text, reRender }) => {
   const [edit, setEdit] = useState(false)
-  const [value, setValue] = useState(text)
+  const [textValue, setTextValue] = useState(text[0])
+  const [priorityValue, setPriorityValue] = useState(text[1])
   const renderTodo = () => {
     if (edit) {
       return (
-        <form onSubmit={handleSubmit}>
-          <input onChange={handleChange} value={value} />
+        <form style={{ display: 'flex' }} onSubmit={handleSubmit}>
+          <TextField
+            fullWidth={true}
+            autoFocus
+            onChange={handleChange}
+            value={textValue}
+            style={{ flex: 0.5 }}
+          />
+          <FormControl
+            style={{
+              flex: 0.25,
+              position: 'relative',
+              left: '12%',
+              bottom: '11px'
+            }}
+          >
+            <InputLabel htmlFor='age-customized-native-simple'>
+              Priority
+            </InputLabel>
+            <NativeSelect value={priorityValue} onChange={onPriorityChange}>
+              <option value='high'>high</option>
+              <option value='medium'>medium</option>
+              <option value='low'>low</option>
+            </NativeSelect>
+          </FormControl>
         </form>
       )
     } else {
       return (
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <p style={{ fontSize: '2em', fontWeight: '300' }}>{value[0]}</p>
+          <p style={{ fontSize: '2em', fontWeight: '300' }}>{textValue}</p>
           <p style={{ fontSize: '2em', fontWeight: '300' }}>
-            {value[1]} priority
+            {priorityValue} priority
           </p>
         </div>
       )
@@ -63,14 +89,17 @@ const TodoItem = ({ text }) => {
     }
   }
   const handleChange = e => {
-    setValue(e.target.value)
+    setTextValue(e.target.value)
   }
-
   const handleSubmit = e => {
     e.preventDefault()
-    setValue(value)
+    setTextValue(textValue)
     setEdit(false)
   }
+  const onPriorityChange = e => {
+    setPriorityValue(e.target.value)
+  }
+
   return (
     <>
       {renderTodo(text)}

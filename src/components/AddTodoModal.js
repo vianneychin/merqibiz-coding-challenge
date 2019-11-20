@@ -3,13 +3,10 @@ import styled from 'styled-components'
 import TextField from '@material-ui/core/TextField'
 import { StyledButton } from '../styles/Button'
 import InputLabel from '@material-ui/core/InputLabel'
-import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
-import Select from '@material-ui/core/Select'
 import NativeSelect from '@material-ui/core/NativeSelect'
-import InputBase from '@material-ui/core/InputBase'
 
-export const AddTodoModal = ({ props, hideModal, createTodo }) => {
+export const AddTodoModal = ({ hideModal, createTodo }) => {
   const [value, setValue] = useState('')
   const [priority, setPriority] = useState('medium')
 

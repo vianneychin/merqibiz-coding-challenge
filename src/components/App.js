@@ -7,6 +7,7 @@ import { StyledButton } from '../styles/Button'
 const App = () => {
   const [todos, setTodos] = useState([])
   const [isModalShowing, setIsModalShowing] = useState(false)
+  const [rerender, setrerender] = useState(false)
 
   const sortTodos = () => {
     let highPriority = []
@@ -24,6 +25,7 @@ const App = () => {
         lowPriority.push(todos[i])
       }
       setTodos([...highPriority, ...mediumPriority, ...lowPriority])
+      setrerender(true)
     }
   }
   const renderModal = () => {
@@ -76,6 +78,7 @@ const App = () => {
                 setTodos(newTodos)
               }}
               todos={todos}
+              reRender={rerender}
             />
           </div>
         </div>
