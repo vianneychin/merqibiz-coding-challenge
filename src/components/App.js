@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
 import TodoList from './TodoList'
 import { AddTodoModal } from './AddTodoModal'
 import { StyledButton } from '../styles/Button'
+import { MainContainer } from '../styles'
 
 const App = () => {
   const [todos, setTodos] = useState([])
@@ -50,6 +50,7 @@ const App = () => {
       setTodos(JSON.parse(data))
     }
   }, [])
+
   useEffect(() => {
     sessionStorage.setItem('my-todos', JSON.stringify(todos))
   }, [todos])
@@ -86,36 +87,5 @@ const App = () => {
     </>
   )
 }
-
-const MainContainer = styled.div`
-  height: 100%;
-  width: 100vw;
-  background-color: rgb(240, 240, 240);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  > div {
-    height: 50%;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    > div:nth-of-type(1) {
-      flex: 0.1;
-      display: flex;
-      justify-content: space-between;
-      > button {
-        flex: 0.45;
-      }
-    }
-    > div:nth-of-type(2) {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-`
 
 export default App

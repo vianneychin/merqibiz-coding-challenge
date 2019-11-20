@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { StyledButton } from '../styles/Button'
 import { TextContent, StyledFormControl } from '../styles'
 import TextField from '@material-ui/core/TextField'
-import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
 import NativeSelect from '@material-ui/core/NativeSelect'
 
@@ -27,6 +26,7 @@ const TodoItem = ({ text }) => {
               Priority
             </InputLabel>
             <NativeSelect value={priorityValue} onChange={onPriorityChange}>
+              ``
               <option value='high'>high</option>
               <option value='medium'>medium</option>
               <option value='low'>low</option>
