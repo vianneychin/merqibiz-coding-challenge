@@ -36,7 +36,7 @@ export const AddTodoModal = ({ props, hideModal, createTodo }) => {
             <label>Priority:</label>{' '}
             <select value={priority} onChange={onOptionChange}>
               <option value='high'>High</option>
-              <option value='medium' selected>
+              <option value='medium' defaultValue>
                 Medium
               </option>
               <option value='low'>Low</option>

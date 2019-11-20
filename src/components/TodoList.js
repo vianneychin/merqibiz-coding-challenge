@@ -1,12 +1,37 @@
 import React, { useState } from 'react'
+const TodoList = ({ todos, deleteTodo }) => {
+  return (
+    <>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>
+            <TodoItem text={todo} item={todo} />
+            <button
+              onClick={() => {
+                deleteTodo(index)
+              }}
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
 
-const TodoList = props => {
+const TodoItem = ({ text }) => {
   const [edit, setEdit] = useState(false)
-  const renderTodo = txt => {
+  const [value, setValue] = useState(text)
+  const renderTodo = () => {
     if (edit) {
-      return <input value={txt} />
+      return (
+        <form onSubmit={handleSubmit}>
+          <input onChange={handleChange} value={value} />
+        </form>
+      )
     } else {
-      return <p>{txt}</p>
+      return <p>{value}</p>
     }
   }
   const renderButton = () => {
@@ -16,23 +41,19 @@ const TodoList = props => {
       return <button onClick={() => setEdit(true)}>Edit</button>
     }
   }
+  const handleChange = e => {
+    setValue(e.target.value)
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    setValue(value)
+    setEdit(false)
+  }
   return (
     <>
-      <ul>
-        {props.todos.map((todo, index) => (
-          <li key={index}>
-            {renderTodo(todo)}
-            {renderButton()}
-            <button
-              onClick={() => {
-                props.deleteTodo(index)
-              }}
-            >
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
+      {renderTodo(text)}
+      {renderButton()}
     </>
   )
 }

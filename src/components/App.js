@@ -41,6 +41,16 @@ const App = () => {
     }
   }
 
+  React.useEffect(() => {
+    const data = sessionStorage.getItem('my-todos')
+    if (data) {
+      setTodos(JSON.parse(data))
+    }
+  }, [])
+  React.useEffect(() => {
+    sessionStorage.setItem('my-todos', JSON.stringify(todos))
+  }, [todos])
+
   return (
     <>
       {renderModal()}
