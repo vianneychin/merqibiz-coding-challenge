@@ -9,7 +9,6 @@ const TodoItem = ({ text }) => {
   const [edit, setEdit] = useState(false)
   const [textValue, setTextValue] = useState(text[0])
   const [priorityValue, setPriorityValue] = useState(text[1])
-
   const renderTodo = () => {
     if (edit) {
       return (
@@ -26,7 +25,6 @@ const TodoItem = ({ text }) => {
               Priority
             </InputLabel>
             <NativeSelect value={priorityValue} onChange={onPriorityChange}>
-              ``
               <option value='high'>high</option>
               <option value='medium'>medium</option>
               <option value='low'>low</option>
@@ -37,39 +35,30 @@ const TodoItem = ({ text }) => {
     } else {
       return (
         <TextContent>
-          <p>{textValue}</p>
-          <p>{priorityValue} priority</p>
+          <p>{text[0]}</p>
+          <p>{text[1]} priority</p>
         </TextContent>
       )
     }
   }
-
   const renderButton = () => {
     if (edit) {
-      return (
-        <StyledButton bg='red' onClick={() => setEdit(false)}>
-          confirm
-        </StyledButton>
-      )
+      return <StyledButton onClick={() => setEdit(false)}>cancel</StyledButton>
     } else {
       return <StyledButton onClick={() => setEdit(true)}>edit</StyledButton>
     }
   }
-
   const handleChange = e => {
     setTextValue(e.target.value)
   }
-
   const handleSubmit = e => {
     e.preventDefault()
     setTextValue(textValue)
     setEdit(false)
   }
-
   const onPriorityChange = e => {
     setPriorityValue(e.target.value)
   }
-
   return (
     <>
       {renderTodo(text)}
@@ -77,5 +66,4 @@ const TodoItem = ({ text }) => {
     </>
   )
 }
-
 export default TodoItem
