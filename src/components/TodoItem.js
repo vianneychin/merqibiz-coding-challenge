@@ -21,9 +21,7 @@ const TodoItem = ({ text }) => {
             style={{ flex: 0.5 }}
           />
           <StyledFormControl>
-            <InputLabel htmlFor='age-customized-native-simple'>
-              Priority
-            </InputLabel>
+            <InputLabel>Priority</InputLabel>
             <NativeSelect value={priorityValue} onChange={onPriorityChange}>
               <option value='high'>high</option>
               <option value='medium'>medium</option>
@@ -35,8 +33,8 @@ const TodoItem = ({ text }) => {
     } else {
       return (
         <TextContent>
-          <p>{text[0]}</p>
-          <p>{text[1]} priority</p>
+          <p>{textValue}</p>
+          <p>{priorityValue} priority</p>
         </TextContent>
       )
     }
