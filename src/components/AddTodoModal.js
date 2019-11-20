@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import TextField from '@material-ui/core/TextField'
 import { StyledButton } from '../styles/Button'
 import InputLabel from '@material-ui/core/InputLabel'
 import FormControl from '@material-ui/core/FormControl'
 import NativeSelect from '@material-ui/core/NativeSelect'
+import { ModalShadow } from '../styles/Modal'
 
 export const AddTodoModal = ({ hideModal, createTodo }) => {
   const [value, setValue] = useState('')
@@ -35,7 +35,7 @@ export const AddTodoModal = ({ hideModal, createTodo }) => {
             variant='outlined'
             label='todo'
           />
-          <div style={{ marginTop: 20, marginBottom: 20 }}>
+          <div>
             <FormControl>
               <InputLabel htmlFor='age-customized-native-simple'>
                 Priority
@@ -47,8 +47,7 @@ export const AddTodoModal = ({ hideModal, createTodo }) => {
               </NativeSelect>
             </FormControl>
           </div>
-
-          <StyledButton type='submit' variant='contained' color='primary'>
+          <StyledButton type='submit' color='primary'>
             Add
           </StyledButton>
         </form>
@@ -56,24 +55,3 @@ export const AddTodoModal = ({ hideModal, createTodo }) => {
     </ModalShadow>
   )
 }
-
-export const ModalShadow = styled.div`
-  background-color: rgb(0, 0, 0, 0.5);
-  height: 100%;
-  width: 100vw;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-  > div {
-    background-color: rgb(240, 240, 240);
-    width: 60%;
-    padding: 2%;
-    border-radius: 0.5rem;
-    > form {
-      display: flex;
-      flex-direction: column;
-    }
-  }
-`
