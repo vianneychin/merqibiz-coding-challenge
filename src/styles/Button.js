@@ -11,5 +11,6 @@ export const StyledButton = styled(Button).attrs(props => ({
     background-color: ${props => props.bg};
     color: ${props => props.clr};
     z-index: 0;
+    flex: ${props => props.flex};
   }
 `

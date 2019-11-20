@@ -56,24 +56,29 @@ const App = () => {
     <>
       {renderModal()}
       <MainContainer>
-        <StyledButton
-
-          bg='cornflowerblue'
-          clr='rgb(240, 240, 240)'
-          onClick={() => setIsModalShowing(true)}
-        >
-          Add a todo
-        </StyledButton>
-        <StyledButton onClick={sortTodos}>
-          Sort by highest priority
-        </StyledButton>
-        <TodoList
-          deleteTodo={todoIndex => {
-            const newTodos = todos.filter((_, index) => index !== todoIndex)
-            setTodos(newTodos)
-          }}
-          todos={todos}
-        />
+        <div>
+          <div>
+            <StyledButton
+              bg='cornflowerblue'
+              clr='rgb(240, 240, 240)'
+              onClick={() => setIsModalShowing(true)}
+            >
+              Add a todo
+            </StyledButton>
+            <StyledButton onClick={sortTodos}>
+              Sort by highest priority
+            </StyledButton>
+          </div>
+          <div>
+            <TodoList
+              deleteTodo={todoIndex => {
+                const newTodos = todos.filter((_, index) => index !== todoIndex)
+                setTodos(newTodos)
+              }}
+              todos={todos}
+            />
+          </div>
+        </div>
       </MainContainer>
     </>
   )
@@ -87,6 +92,27 @@ const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  > div {
+    height: 50%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    > div:nth-of-type(1) {
+      flex: 0.1;
+      display: flex;
+      justify-content: space-between;
+      > button {
+        flex: 0.45;
+      }
+    }
+    > div:nth-of-type(2) {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 `
 
 export default App
