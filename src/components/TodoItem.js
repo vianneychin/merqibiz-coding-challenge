@@ -46,7 +46,11 @@ const TodoItem = ({ text }) => {
 
   const renderButton = () => {
     if (edit) {
-      return <StyledButton onClick={() => setEdit(false)}>cancel</StyledButton>
+      return (
+        <StyledButton bg='red' onClick={() => setEdit(false)}>
+          confirm
+        </StyledButton>
+      )
     } else {
       return <StyledButton onClick={() => setEdit(true)}>edit</StyledButton>
     }
