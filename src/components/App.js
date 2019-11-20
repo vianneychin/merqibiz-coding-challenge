@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import TodoList from './TodoList'
-import { AddTodoModal } from './AddTodoModal'
+import AddTodoModal from './AddTodoModal'
 import { StyledButton } from '../styles/Button'
 import { MainContainer } from '../styles'
 

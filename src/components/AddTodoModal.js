@@ -6,7 +6,7 @@ import FormControl from '@material-ui/core/FormControl'
 import NativeSelect from '@material-ui/core/NativeSelect'
 import { ModalShadow } from '../styles/Modal'
 
-export const AddTodoModal = ({ hideModal, createTodo }) => {
+const AddTodoModal = ({ hideModal, createTodo }) => {
   const [value, setValue] = useState('')
   const [priority, setPriority] = useState('medium')
 
@@ -55,3 +55,5 @@ export const AddTodoModal = ({ hideModal, createTodo }) => {
     </ModalShadow>
   )
 }
+
+export default AddTodoModal
